@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>فروشگاه پارچه</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
+
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background-color: #f9f9ff;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(to left, #7c3aed, #a855f7);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      padding: 20px;
+      margin-bottom: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .product-image {
+      flex: 1;
+      max-width: 200px;
+    }
+
+    .product-image img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .product-name {
+      flex: 2;
+      text-align: center;
+    }
+
+    .product-name h3 {
+      font-size: 24px;
+      color: #4c1d95;
+      margin: 0;
+    }
+
+    .product-actions {
+      flex: 2;
+      text-align: left;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #6d28d9;
+      margin-bottom: 10px;
+    }
+
+    .meter-input {
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    input[type="number"] {
+      padding: 5px 10px;
+      width: 60px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .total-price {
+      margin-top: 10px;
+      color: #4c1d95;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .product-card {
+        flex-direction: column;
+        text-align: center;
+      }
+      .product-actions {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>فروشگاه پارچه</h1>
+    <p>انتخاب آسان متراژ، محاسبه قیمت سریع</p>
+  </header>
+
+  <div class="container">
+    <div class="product-card">
+      <!-- ستون ۱: عکس -->
+      <div class="product-image">
+        <img src="https://fabricstore.com/cdn/shop/files/black-wool.jpg" alt="پارچه مشکی">
+      </div>
+
+      <!-- ستون ۲: نام محصول -->
+      <div class="product-name">
+        <h3>پارچه پشمی مشکی</h3>
+      </div>
+
+      <!-- ستون ۳: قیمت و انتخاب متراژ -->
+      <div class="product-actions">
+        <p class="price">قیمت هر متر: ۵۰٬۰۰۰ تومان</p>
+        <div class="meter-input">
+          <label for="meter1">متراژ:</label>
+          <input type="number" id="meter1" min="1" value="1" onchange="calculatePrice(1, 50000)">
+        </div>
+        <p class="total-price" id="total1">قیمت نهایی: ۵۰٬۰۰۰ تومان</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function calculatePrice(id, pricePerMeter) {
+      const meterInput = document.getElementById('meter' + id);
+      const total = pricePerMeter * meterInput.value;
+      const formatted = total.toLocaleString('fa-IR');
+      document.getElementById('total' + id).innerText = `قیمت نهایی: ${formatted} تومان`;
+    }
+
+    calculatePrice(1, 50000);
+  </script>
+</body>
+</html>
